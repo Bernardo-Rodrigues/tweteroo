@@ -20,14 +20,15 @@ server.post("/sign-up", (req, res) => {
 })
 
 server.post("/tweets", (req, res) => {
-    const postedTweet = req.body
+    const tweetText = req.body.tweet
+    const tweetUsername = req.headers.user
 
-    if(!postedTweet.username || !postedTweet.tweet) {
+    if(!tweetText || !tweetUsername) {
         res.status(400).send("Todos os campos são obrigatórios!")
     }else{
-        const tweetUser = users.find( user => user.username === postedTweet.username)
-
-        tweets.push({...req.body, avatar: tweetUser.avatar})
+        const tweetUser = users.find( user => user.username === tweetUsername)
+        
+        tweets.push({...req.body, username: tweetUsername, avatar: tweetUser.avatar})
         res.status(201).send("OK")
     }
 })
