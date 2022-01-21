@@ -15,3 +15,10 @@ server.post("/sign-up", (req, res) => {
     res.send("OK")
 })
 
+server.post("/tweets", (req, res) => {
+    const tweet = req.body
+    const tweetUser = users.find( user => user.username === tweet.username)
+
+    tweets.push({...req.body, avatar: tweetUser.avatar})
+    res.send("OK")
+})
