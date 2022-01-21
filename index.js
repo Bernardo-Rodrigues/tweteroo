@@ -15,7 +15,7 @@ server.post("/sign-up", (req, res) => {
         res.status(400).send("Todos os campos são obrigatórios!")
     }else{
         users.push(req.body)
-        res.send("OK")
+        res.status(201).send("OK")
     }
 })
 
@@ -28,7 +28,7 @@ server.post("/tweets", (req, res) => {
         const tweetUser = users.find( user => user.username === postedTweet.username)
 
         tweets.push({...req.body, avatar: tweetUser.avatar})
-        res.send("OK")
+        res.status(201).send("OK")
     }
 })
 
