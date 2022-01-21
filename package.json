@@ -1,6 +1,7 @@
 {
   "name": "projeto_11_tweteroo",
   "version": "1.0.0",
+  "type": "module",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -16,5 +17,12 @@
   "bugs": {
     "url": "https://github.com/Bernardo-Rodrigues/tweteroo/issues"
   },
-  "homepage": "https://github.com/Bernardo-Rodrigues/tweteroo#readme"
+  "homepage": "https://github.com/Bernardo-Rodrigues/tweteroo#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
 }
