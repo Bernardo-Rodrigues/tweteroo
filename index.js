@@ -35,3 +35,10 @@ server.post("/tweets", (req, res) => {
 server.get("/tweets", (req, res) => {
     res.send(tweets.slice(-10))
 })
+
+server.get("/tweets/:username", (req, res) => {
+    const username = req.params.username
+    const userTweets = tweets.filter( tweet => tweet.username === username)
+
+    res.send(userTweets)
+})
