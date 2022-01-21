@@ -22,3 +22,7 @@ server.post("/tweets", (req, res) => {
     tweets.push({...req.body, avatar: tweetUser.avatar})
     res.send("OK")
 })
+
+server.get("/tweets", (req, res) => {
+    res.send(tweets.slice(-10))
+})
