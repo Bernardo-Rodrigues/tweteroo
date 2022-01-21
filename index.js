@@ -11,16 +11,25 @@ const users = []
 const tweets = []
 
 server.post("/sign-up", (req, res) => {
-    users.push(req.body)
-    res.send("OK")
+    if(!req.body.username || !req.body.avatar) {
+        res.status(400).send("Todos os campos são obrigatórios!")
+    }else{
+        users.push(req.body)
+        res.send("OK")
+    }
 })
 
 server.post("/tweets", (req, res) => {
-    const tweet = req.body
-    const tweetUser = users.find( user => user.username === tweet.username)
+    const postedTweet = req.body
 
-    tweets.push({...req.body, avatar: tweetUser.avatar})
-    res.send("OK")
+    if(!postedTweet.username || !postedTweet.tweet) {
+        res.status(400).send("Todos os campos são obrigatórios!")
+    }else{
+        const tweetUser = users.find( user => user.username === postedTweet.username)
+
+        tweets.push({...req.body, avatar: tweetUser.avatar})
+        res.send("OK")
+    }
 })
 
 server.get("/tweets", (req, res) => {
