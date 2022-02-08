@@ -6,7 +6,9 @@ const server = express()
 
 server.use(cors())
 server.use(json())
-server.listen(5000)
+server.listen(5000, ()=>{
+    console.log(`Server listening on PORT 5000`)
+})
 
 const users = []
 const tweets = []
@@ -30,8 +32,7 @@ server.post(
     (req, res) => {
         const errors = validationResult(req)
         const tweetUsername = req.header("User")
-
-
+        
         if(!errors.isEmpty()) res.status(400).send("Todos os campos são obrigatórios!")
         else{
             const tweetUser = users.find( user => user.username === tweetUsername)
